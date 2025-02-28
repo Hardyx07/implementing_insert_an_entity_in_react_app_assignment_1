@@ -1,15 +1,24 @@
-// src/components/Home.jsx
+// src/Home.jsx
 
 import React from "react";
-import BookCard from "./components/BookCard";
+import { useNavigate } from "react-router-dom";
 import books from "./booksData";
-import "./Home.css"; // Import the CSS for styling
+import BookCard from "./components/BookCard";
 
 const Home = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="home-container">
+    <div>
       <h1>Book Library</h1>
-      <div className="books-grid">
+      
+      {/* Add Book Button */}
+      <button className="add-book-btn" onClick={() => navigate("/add-book")}>
+        Add Book
+      </button>
+
+      {/* Book List */}
+      <div className="book-list">
         {books.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
